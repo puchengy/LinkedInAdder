@@ -12,7 +12,9 @@ if __name__ == '__main__':
     parser.add_argument('--password', type=str, help='LinkedIn Password', required=True)
     parser.add_argument('--chromeDriver', type=str, default='./chromedriver', help='Chrome Driver Location')
     parser.add_argument('--keyWords', type=str, default='', help='Connection Filter')
-    parser.add_argument('--refreshTime', type=int, default=5, help='How long you want to refresh the page')
+    parser.add_argument('--refreshTime', type=int, default=10, help='How long you want to refresh the page')
+    parser.add_argument('--batchSize', type=int, default=10, help='how many pages you want to refresh in a batch')
+    parser.add_argument('--batchInterval', type=int, default=120, help='the gap between each batch')
     args = parser.parse_args()
     if args.keyWords != '':
         # to do handle this
