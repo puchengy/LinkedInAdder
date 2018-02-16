@@ -24,8 +24,10 @@ if __name__ == '__main__':
         addAll = True
 
     # parameters
-    MY_NETWORK_PAGE_WAIT_TIME = args.refreshTime   # wait for the JS request to finish
-    WAIT_AFTER_CLICK_TIME = 1                      # wait after click the 'connect' button
+    BATCH_SIZE = args.batchSize
+    BATCH_INTERVAL = args.batchInterval
+    REFRESH_TIME = args.refreshTime   # wait for the JS request to finish
+    WAIT_AFTER_CLICK_TIME = 1         # wait after click the 'connect' button
 
     # login the LinkedIn
     driver = webdriver.Chrome(args.chromeDriver)
@@ -39,9 +41,12 @@ if __name__ == '__main__':
     # click 'connect' on LinkedIn Pages
     driver.get("https://www.linkedin.com/mynetwork/")
     time.sleep(MY_NETWORK_PAGE_WAIT_TIME)   # wait for 5s to let the
+
+    counter = 0
     # loop the whole process
     while True:
         # for each page
+        counter += 1
         person_index = 0
         while True:
             # get the info cards on the current page
@@ -71,4 +76,7 @@ if __name__ == '__main__':
             except:
                 break  
         driver.refresh()
-        time.sleep(MY_NETWORK_PAGE_WAIT_TIME)
+        if counter % BATCH_INTERVAL == 0:
+            time.sleep(BATCH_INTERVAL)
+        else:
+            time.sleep(MY_NETWORK_PAGE_WAIT_TIME)
