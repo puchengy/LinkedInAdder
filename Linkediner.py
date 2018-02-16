@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
     # click 'connect' on LinkedIn Pages
     driver.get("https://www.linkedin.com/mynetwork/")
-    time.sleep(REFRESH_TIME)   # wait for 5s to let the
+    time.sleep(REFRESH_TIME)
 
     counter = 0
     # loop the whole process
@@ -70,13 +70,12 @@ if __name__ == '__main__':
                         person_index += 1
                         continue
                 # if click, person_info will disappear so do not need to move the index
-                print "adding profile: {}\n".format(occupation_description)
                 person_infos[person_index].find_element_by_class_name("button-secondary-small").click()
                 time.sleep(WAIT_AFTER_CLICK_TIME)
             except:
                 break  
         driver.refresh()
-        if counter % BATCH_INTERVAL == 0:
+        if counter % BATCH_SIZE == 0:
             time.sleep(BATCH_INTERVAL)
         else:
             time.sleep(REFRESH_TIME)
