@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
     # click 'connect' on LinkedIn Pages
     driver.get("https://www.linkedin.com/mynetwork/")
-    time.sleep(MY_NETWORK_PAGE_WAIT_TIME)   # wait for 5s to let the
+    time.sleep(REFRESH_TIME)   # wait for 5s to let the
 
     counter = 0
     # loop the whole process
@@ -79,4 +79,4 @@ if __name__ == '__main__':
         if counter % BATCH_INTERVAL == 0:
             time.sleep(BATCH_INTERVAL)
         else:
-            time.sleep(MY_NETWORK_PAGE_WAIT_TIME)
+            time.sleep(REFRESH_TIME)
