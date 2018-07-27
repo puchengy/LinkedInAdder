@@ -58,7 +58,7 @@ if __name__ == '__main__':
                 # if not addAll apply filter
                 if not addAll:
                     # select the keywords
-                    occupation = person_infos[person_index].find_element_by_class_name("mn-person-info__occupation")
+                    occupation = person_infos[person_index].find_element_by_class_name("pymk-card__occupation")
                     occupation_description = occupation.text.lower()
                     toClick = False
                     for keyWord in keyWords:
