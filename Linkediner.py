@@ -62,7 +62,7 @@ if __name__ == '__main__':
                     occupation_description = occupation.text.lower()
                     toClick = False
                     for keyWord in keyWords:
-                        if keyWord in occupation_description:
+                        if keyWord.lower() in occupation_description.lower():
                             toClick = True
                             break
                     if not toClick:
